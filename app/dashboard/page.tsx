@@ -1,6 +1,6 @@
 import { getServerSession } from "next-auth";
 import { redirect } from "next/navigation";
-import { authOptions } from "@/app/api/auth/[...nextauth]/route"; // Adjust the path if necessary
+import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 
 const Dashboard = async () => {
   const session = await getServerSession(authOptions);
@@ -12,7 +12,9 @@ const Dashboard = async () => {
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen">
-      <h1 className="text-3xl font-bold">Welcome to the Dashboard</h1>
+      <main className="flex-1">
+        <h2>Hey Welcome to the dashboard page</h2>
+      </main>
     </div>
   );
 };

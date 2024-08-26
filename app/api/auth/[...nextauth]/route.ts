@@ -14,12 +14,16 @@ export const authOptions: AuthOptions = {
   callbacks: {
     async session({ session, token, user }) {
       session.user = token;
+      session.user.email = token.email;
+      session.user.image = token.picture;
       return session;
     },
-    async jwt({ token, user, account }) {
-      if (account) {
-        token.accessToken = account.access_token;
+    async jwt({ token, user, account, profile }) {
+      // If it's a new user or just signed in, populate the token with user data
+      if (account && profile) {
+        token.email = profile.email;
       }
+
       return token;
     },
   },
